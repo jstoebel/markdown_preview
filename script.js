@@ -1,10 +1,13 @@
-var InputBox = React.createClass({
+var Preview = React.createClass({
 
 	handleChange: function(elem){
 		//set the value of output
-		this.setState({
-			msg: elem.target.value
-		})
+		// var marked = require("marked");
+		var parsed = marked(elem.target.value);
+		// this.setState({
+		// 	msg: parsed
+		// })
+		$("#output").html(parsed);
 	},
 
 	getInitialState: function(){
@@ -13,28 +16,33 @@ var InputBox = React.createClass({
 
 	render: function(){
 
-	    return (<div class="container">
-    		<h2>Markdown Editor</h2>
-	      	<p>Type your markdown here and see it rendered below.</p>
-	      	<form role="form">
-		        <div class="form-group">
-		          <textarea class="form-control"
-		           rows="25"
-		           type="text"
-		           className="form-controll"
-					onChange={this.handleChange}
-					defaultValue={this.value}
-		            id="comment">
-	            	</textarea>
-		            <p id="output">{this.state.msg}</p>
-		        </div>
-	      	</form>
-	      </div>);
+	    return (
+			<div className="row">
+				<div className="col-md-6">
+			      	<form role="form">
+				        <div className="form-group">
+				          <textarea className="form-control"
+				           rows="15"
+				           type="text"
+				           className="form-controll"
+							onChange={this.handleChange}
+							defaultValue={this.value}
+				            id="comment">
+			            	</textarea>
+				        </div>
+			      	</form>
+				</div>				
+				
+				<div className="col-md-6">
+					<p id="output">{this.state.msg}</p>
+				</div>				
+			</div>
+      	);
 	}
 })
 
 
 
 
-React.render(<InputBox/>, 
+React.render(<Preview/>, 
     document.getElementById('container'));

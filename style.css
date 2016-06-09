@@ -2,7 +2,10 @@ div {
 	width: 100%;
 }
 textarea {
-
   resize: vertical;
   height: 100%;
+}
+
+.centered {
+	text-align: center;
 }
